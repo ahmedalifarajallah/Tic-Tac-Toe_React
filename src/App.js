@@ -21,9 +21,9 @@ function calculateWinner(squares) {
     [2, 4, 6],
   ];
 
-  for(let i=0; i<lines.length; i++) {
+  for (let i = 0; i < lines.length; i++) {
     const [a, b, c] = lines[i];
-    if(squares[a] && squares[a] === squares[b] && squares[a] === squares[c]) {
+    if (squares[a] && squares[a] === squares[b] && squares[a] === squares[c]) {
       return squares[a];
     }
   }
@@ -31,22 +31,19 @@ function calculateWinner(squares) {
   return null;
 }
 
-
 export default function Board() {
-
   const [squares, setSquares] = useState(Array(9).fill(null));
   const [xIsNext, setXIsNext] = useState(true);
   const winner = calculateWinner(squares);
   let status;
 
-  if(winner) {
+  if (winner) {
     status = "Winner: " + winner;
   } else {
     status = "Next Player: " + (xIsNext ? "X" : "O");
   }
 
   function handleClick(i) {
-
     // // If the game end without winner
     // if(!squares.includes(null)){
     //   status = "The Game End Without winner";
